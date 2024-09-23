@@ -64,7 +64,7 @@ The **Link-Share App** allows users to store and share links from different plat
 ### Backend Setup
 1. Navigate to the frontend folder:
     ```bash
-    cd ../frontend
+    cd ../link-sharing-webapp
 2. Install dependencies:
     ```bash
     npm install
