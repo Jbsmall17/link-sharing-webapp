@@ -1,4 +1,3 @@
-
 const nodemailer = require('nodemailer');
 const ejs = require('ejs');
 const path = require('path');
@@ -12,10 +11,12 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: process.env.email, 
         pass: process.env.password 
-    }
+    },
+    tls: {
+        rejectUnauthorized: false
+      },
+      debug: true
 });
-
-
 
 const sendWelcomeEmail = (recipientEmail) => {
     const templatePath = path.join(__dirname, 'views', 'welcome.ejs');
@@ -34,12 +35,13 @@ const sendWelcomeEmail = (recipientEmail) => {
             html: htmlContent
         };
 
-        // Send mail
+        // Directly send email without verify
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                return console.log('Error occurred:', error.message);
+                console.log('Error occurred:', error.message);
+            } else {
+                console.log('Message sent:', info.messageId);
             }
-            console.log('Message sent:', info.messageId);
         });
     });
 };

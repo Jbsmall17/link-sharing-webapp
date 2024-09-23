@@ -19,7 +19,7 @@ const apiUrl = import.meta.env.VITE_API_URL
 
 export default function Profile() {
   const token = sessionStorage.getItem("token")
-  const {userInfo} = useMyContext()
+  const {setUserInfo,userInfo} = useMyContext()
   const [profileObj,setProfileObj] = useState({
     profilePicture: "",
     firstName: "",
@@ -52,6 +52,9 @@ export default function Profile() {
           if(response.status === 200){
             toast.success(response.data.message)
             setIsLoading(false)
+            setUserInfo({
+              ...response.data.data
+            })
           }
         }catch(error: any){
           toast.error(error.response.data.message)
@@ -114,7 +117,7 @@ export default function Profile() {
                 <div className='flex flex-col gap-2 md:gap-0  md:flex-row md:items-center'>
                   <p className='flex-1 text-sm text-[#737373]'>Profile picture</p>
                   <div className='flex flex-col md:flex-row gap-4 md:items-center flex-[2]'>
-                    <div onClick={handleDivEvent} className='relative w-[150px] h-[150px] rounded-lg bg-[#efebff] flex justify-center items-center'>
+                    <div onClick={handleDivEvent} className='cursor-pointer relative w-[150px] h-[150px] rounded-lg bg-[#efebff] flex justify-center items-center'>
                       <input
                         className='hidden'
                         type='file'
@@ -220,7 +223,8 @@ export default function Profile() {
                       placeholder='email@example.com'
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.email} 
+                      value={formik.values.email}
+                      readOnly
                     />
                     {
                       formik.touched.email && formik.errors.email && 

@@ -5,7 +5,7 @@ import passwordSvg from "../assets/images/icon-password.svg"
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -56,6 +56,7 @@ export default function Signup() {
             setsetIsDisabled(false)
             setIsLoading(false)
             if(response.status === 201){
+                sessionStorage.setItem("token",response.data.token)
                 navigate("/home")
             }
         }catch(error : any){
@@ -65,6 +66,19 @@ export default function Signup() {
             setIsLoading(false)
         }
     }
+
+    function handleKeyDown(e: KeyboardEvent) {
+        if (e.key === "Enter") {
+          formik.handleSubmit();
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+          window.removeEventListener("keydown", handleKeyDown);
+        };
+      }, []);
 
   return (
     <div className='w-[100vw] h-[100vh] flex justify-center items-center'>

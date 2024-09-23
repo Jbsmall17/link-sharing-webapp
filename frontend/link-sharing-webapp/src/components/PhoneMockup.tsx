@@ -39,7 +39,7 @@ export default function PhoneMockup() {
               : <img src={userInfo.profilePicture} alt='profile picture' className='block mb-2 w-[100px] h-[100px] rounded-full' />
             }
             {
-              userInfo.firstName == "" && userInfo.lastName
+              userInfo.firstName == "" && userInfo.lastName == ""
               ? <div className='w-[150px] h-[15px] rounded-full bg-[#eeeeee] mb-2 animate-pulse'></div> 
               : <p className='mb-2 text-[#333333] text-xl font-semibold'>{`${userInfo.firstName} ${userInfo.lastName}`}</p>
             }

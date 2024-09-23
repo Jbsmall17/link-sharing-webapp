@@ -37,11 +37,15 @@ authRouter.post(
                         message : "user creation failed"
                     })
                 }
-
+                const token =jwt.sign(
+                    {email:email,id: user._id},
+                    JWT_SECRET
+                )
                 await emailSender.sendWelcomeEmail(email)
                 return res.status(201).json({
                     message : "user Created successfully",
-                    data: user
+                    data: user,
+                    token: token
                 })
             }
         }catch(error){

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import devlinks from "../assets/images/logo-devlinks-large.svg"
 import emailSvg from "../assets/images/icon-email.svg"
 import passwordSvg from "../assets/images/icon-password.svg"
@@ -34,7 +34,6 @@ export default function Login() {
         initialValues: loginObj,
         validationSchema: loginObjValidationSchema,
         onSubmit: (values)=>{
-            console.log(values)
             loginFunc(values)
         }
     })
@@ -59,6 +58,18 @@ export default function Login() {
         }
     }
 
+    function handleKeyDown(e: KeyboardEvent) {
+        if (e.key === "Enter") {
+          formik.handleSubmit();
+        }
+      }
+
+      useEffect(() => {
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+          window.removeEventListener("keydown", handleKeyDown);
+        };
+      }, []);
   return (
     <div className='w-[100vw] h-[100vh] flex justify-center items-center'>
         <ToastContainer />
