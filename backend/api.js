@@ -61,6 +61,10 @@ app.use((err,req,res,next)=>{
     })
 })
 
+app.get("/",async(req,res)=>{
+    res.status(200).send("RESTful API of link-share webapp")
+})
+
 app.listen(PORT,()=>{
     console.log(`locolhost:${PORT}`)
 })
