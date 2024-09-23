@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn:hover, .btn:active{
+    background-color: #beadff;
+    box-shadow: 10px 20px 25px -5px rgba(190, 173, 255,0.25), 10px 10px 10px -5px rgba(190, 173, 255,0.25);
+    transition: all ease-in 0.5s;
+}
+
+.btn2:hover, .btn2:focus{
+    box-shadow: 3px 3px 10px 10px rgba(190, 173, 255,0.35);
+    transition: all ease-in 0.5s;
+}
+
+
+li:hover svg path{
+    fill: #633cff
+}
+
+ul.dropdown{
+    box-shadow: 3px -3px 5px 10px rgba(0,0,0,0.05);
+}
+
+::-webkit-scrollbar{
+    width: 7.5px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: #fafafa;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #d9d9d9;
+    border-radius: 7.5px;
+    border: 1px solid #f4f4f4;
+}
+
+.nav-links.active{
+    background-color: #efebff;
+}
+
+.nav-links.active svg path{
+    fill: #633cff
+}
+
+.nav-links.active a{
+    color: #633cff;
+}
+
+
+.nav-links:hover{
+    cursor: pointer;
+    background-color: #efebff;
+}
+
+.nav-links:hover svg path{
+    fill: #633cff
+}
+.nav-links:hover a{
+    color: #633cff;
+}
+
+.card svg path{
+    fill: white
+}
+
+svg.change-photo path{
+    fill: #ffffff;
+}
+svg.upload-photo path{
+    fill: #633CFF
+}
