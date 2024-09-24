@@ -78,10 +78,12 @@ async function createMultipleLink(req,res){
                 )
             } 
         }
-        
+        const user = await userModel.findOne({_id: req.userId}) 
+        const userLink = user.links
+
         return res.status(201).json({
             message: "All links has been created successfully",
-            data : createdLinkArray
+            data : userLink
         })
     }catch(error){
         console.log(error)
