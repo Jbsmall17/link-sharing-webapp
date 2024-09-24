@@ -9,7 +9,7 @@ A MERN stack application that allows users to post and store links from various 
 4. [Installation and Setup](#installation-ans-setup)
 
 ## Project Overiew
-The **Link-Share App** allows users to store and share links from different platforms. Each link is presented with a rich preview, making it easier to differnetiate between them others. The app also provides a shareable preview page for all the saved links, which can be distributed among social contacts or shared with potential employers.
+The **Link-Share App** allows users to store and share links from different platforms. Each link is presented with a rich preview, making it easier to differnetiate between them from others. The app also provides a shareable preview page for all the saved links, which can be distributed among social contacts or shared with potential employers.
 
 ## Features
 
