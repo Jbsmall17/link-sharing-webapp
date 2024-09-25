@@ -58,7 +58,7 @@ export default function Preview() {
         <div className='p-2 h-auto md:h-[40vh] rounded-b-lg w-full md:bg-[#633cff]'>
           <div className='rounded-lg bg-[#ffffff] py-2 px-2 flex flex-row gap-2 md:gap-0 md:justify-between'>
             <button
-              onClick={()=>navigate("/profile-details")} 
+              onClick={()=>navigate("/home")} 
               className='flex-1 md:flex-none border-[1.5px] border-[#633cff] py-2 px-4 text-sm text-[#633cff] rounded-lg hover:bg-[#efebff] transition duration-700'>Back to Editor</button>
             <button 
               className='flex-1 md:flex-none border-0 text-sm text-[#fafafa] py-2 px-4 rounded-lg bg-[#633cff] hover:bg-[#beadff] transition duration-700'

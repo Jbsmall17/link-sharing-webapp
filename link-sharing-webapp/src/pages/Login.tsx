@@ -51,10 +51,13 @@ export default function Login() {
                 navigate("/home")
             }
         }catch(error:any){
-            console.log(error)
-            toast.error(error.response.data.message)
             setIsLoading(false)
             setIsDisabled(false)
+            if(error.message != "Network Error"){
+                toast.error(error.response.data.message)
+            }else{
+                toast.error(error.message)
+            }
         }
     }
 

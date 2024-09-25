@@ -20,7 +20,9 @@ export default function Home() {
   const token = sessionStorage.getItem("token")
   const {links, setLinks, setUserInfo,linkRef} = useMyContext()
   const [isLoading,setIsLoading] = useState(false)
+  const [isLinkAdded, setIsLinkAdded] = useState(false)
   function addlinks(){
+    setIsLinkAdded(true)
     if(token){
       const userInfoObj : userInfoType = jwtDecode(token)
 
@@ -58,6 +60,11 @@ export default function Home() {
       if(response.status === 201){
         toast.success(response.data.message)
         setIsLoading(false)
+        setIsLinkAdded(false)
+        setLinks([
+          ...response.data.data
+        ])
+
       }
       }catch(error : any){
         toast.error(error.response.data.message)
@@ -172,9 +179,9 @@ export default function Home() {
           }
           <div className='flex justify-end py-4'>
             <button
-              disabled={links.length == 0 ? true : false}
+              disabled={links.length == 0 || !isLinkAdded ? true : false}
               onClick={postMultipleLink}
-              className={`rounded-lg w-full md:w-auto text-xs py-2 px-6 text-white ${links.length == 0 ? "bg-[#beadff]": "bg-[#633cff] btn"}`}
+              className={`rounded-lg w-full md:w-auto text-xs py-2 px-6 text-white ${links.length == 0 || !isLinkAdded ? "bg-[#beadff]": "bg-[#633cff] btn"}`}
             >
               {isLoading ? <Spinner /> : "Save"}
             </button>

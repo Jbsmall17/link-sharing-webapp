@@ -10,7 +10,7 @@ import linkSvg from "../assets/images/icon-link.svg"
 import * as Yup from "yup"
 import { useMyContext } from '../contextApi'
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { FaXTwitter, FaInstagram } from "react-icons/fa6";
 
 interface linkObj{
@@ -115,8 +115,6 @@ export default function Link({linkk,idProp}:linkObjProp) {
     }
     async function removeLink(){
         const endpoint = `${apiUrl}/api/link/${linkk._id}`
-        const Interger =  parseInt(linkk._id)
-        if(!Interger && Interger != 0){
             try{
                 const response = await axios.delete(endpoint,{
                     headers :{
@@ -128,14 +126,15 @@ export default function Link({linkk,idProp}:linkObjProp) {
                     toast.success(response.data.message)
                 }
             }catch(error:any){
-                toast.error(error.response.data.message)
+                if(error.message != "Network Error"){
+                    setLinks(prevLinks => prevLinks.filter((_, id) => idProp !== id));
+                    toast.success("Link successfully deleted")     
+                }else{
+                    toast.error(error.response)
+                }
+                
             }
-        }else{
-            setLinks(prevLinks => prevLinks.filter((_, id) => idProp !== id));
-            toast.success("Link successfully deleted")
-        }
     }
-
     useEffect(() => {
         setLinks(prevLinks => {
             const newLinks = [...prevLinks];
@@ -151,7 +150,6 @@ export default function Link({linkk,idProp}:linkObjProp) {
 
   return (
     <div className='p-2 mb-2 bg-[#fafafa] rounded-lg'>
-        <ToastContainer />
         <div className='flex flex-row justify-between'>
             <div className='flex flex-row gap-1'>
                 <img
