@@ -25,7 +25,6 @@ export default function Home() {
     setIsLinkAdded(true)
     if(token){
       const userInfoObj : userInfoType = jwtDecode(token)
-
       setLinks([
         ...links,
         {
@@ -36,7 +35,7 @@ export default function Home() {
         }
       ])
     }
-
+    toast.success("scroll down to see link")    
   }
 
   async function postMultipleLink(){

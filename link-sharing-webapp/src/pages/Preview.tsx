@@ -12,8 +12,7 @@ export default function Preview() {
   const {userInfo, setUserInfo} = useMyContext()
   const {id} = useParams()
   const navigate = useNavigate()
-  async function getUserInfo(){
-    if(userInfo.email != "") return 
+  async function getUserInfo(){ 
     const endpoint = `${apiUrl}/api/${id}`
     try{
       const response = await axios.get(endpoint)
