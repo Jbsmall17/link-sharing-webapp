@@ -31,7 +31,7 @@ const sendWelcomeEmail = (recipientEmail) => {
         const mailOptions = {
             from: process.env.email,
             to: recipientEmail,
-            subject: 'Welcome to Our Service!',
+            subject: 'Welcome to Devlinks!',
             html: htmlContent
         };
 
