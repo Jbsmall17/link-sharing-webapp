@@ -61,6 +61,12 @@ The **Link-Share App** allows users to store and share links from different plat
     ```bash
     npm run dev
 
+### Frontens Setup
+1. credentials:
+   username: testuser1@mailinator.com
+   password: testuser1
+2. The frontend should be running on http://localhost:5173/
+
 ### Backend Setup
 1. Navigate to the frontend folder:
     ```bash
@@ -71,4 +77,4 @@ The **Link-Share App** allows users to store and share links from different plat
 3. Start the frontend development server:
     ```bash
     npm run dev
-4. The frontend should be running on http://localhost:5173/
+4. The backend is hosted on free plan on render. it might take 3 - 5 minutes to get response on first request
